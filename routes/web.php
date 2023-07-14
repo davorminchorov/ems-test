@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\SpeakerSignUp\Http\Controllers\SpeakerSignUpController;
+use App\SpeakerSignUp\Http\Controllers\SpeakerSignUpPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +25,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/speakers/sign-up', SpeakerSignUpPageController::class)->name('speakers.sign-up-page');
+    Route::post('/speakers', SpeakerSignUpController::class)->name('speakers.sign-up');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
