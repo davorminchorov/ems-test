@@ -35,15 +35,16 @@ final class Speaker extends Model
 
     public static function signUp(int $userId, string $name, string $email, string $bio): self
     {
-        $speaker = self::create([
+        return self::create([
             'user_id' => $userId,
             'name' => $name,
             'email' => $email,
             'bio' => $bio,
         ]);
+    }
 
-        self::$dispatcher->dispatch(SpeakerSignedUp::class);
-
-        return $speaker;
+    public function byEmail(string $email): bool
+    {
+        return $this->newQuery()->where('email', $email)->exists();
     }
 }

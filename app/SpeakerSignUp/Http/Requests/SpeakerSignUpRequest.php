@@ -26,8 +26,8 @@ final class SpeakerSignUpRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:150'],
-            'email' => ['required', 'email', 'max:200', 'exists:speakers,email'],
-            'bio' => ['required', 'string', 'min:10']
+            'email' => ['required', 'string', 'email:rfc,dns', 'max:200'],
+            'bio' => ['required', 'string', 'min:10'],
         ];
     }
 }

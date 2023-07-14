@@ -7,13 +7,10 @@ namespace App\SpeakerSignUp\Http\Controllers;
 use App\SpeakerSignUp\Commands\SignUpSpeakerCommand;
 use App\SpeakerSignUp\Http\Requests\SpeakerSignUpRequest;
 use Illuminate\Contracts\Bus\Dispatcher;
-use Illuminate\Contracts\Routing\UrlGenerator;
-use Illuminate\Http\RedirectResponse;
-use Symfony\Component\HttpFoundation\Response;
 
 final readonly class SpeakerSignUpController
 {
-    public function __construct(private Dispatcher $dispatcher, private UrlGenerator $urlGenerator)
+    public function __construct(private Dispatcher $dispatcher)
     {
 
     }
@@ -28,9 +25,6 @@ final readonly class SpeakerSignUpController
             )
         );
 
-        return (new RedirectResponse(
-            $this->urlGenerator->route('dashboard'),
-            Response::HTTP_CREATED,
-        ))->with('speaker', 'speaker-signed-up');
+        return back()->with('speaker', 'speaker-signed-up');
     }
 }
