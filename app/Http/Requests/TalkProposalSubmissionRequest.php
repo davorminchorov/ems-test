@@ -7,7 +7,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-final class SpeakerSignUpRequest extends FormRequest
+final class TalkProposalSubmissionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,9 @@ final class SpeakerSignUpRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:150'],
-            'email' => ['required', 'string', 'email:rfc,dns', 'max:200'],
-            'bio' => ['required', 'string', 'min:10', 'max:1000'],
+            'title' => ['required', 'string', 'max:200'],
+            'abstract' => ['required', 'string', 'min:10', 'max:1000'],
+            'preferred_time_slot' => ['required', 'string', 'date_format:H:i'],
         ];
     }
 }

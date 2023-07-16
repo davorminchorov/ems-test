@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('talk_proposals', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('speaker_id')
+                  ->constrained('speakers')
+                  ->cascadeOnDelete();
+            $table->string('title', 200);
+            $table->text('abstract');
+            $table->string('preferred_time_slot');
             $table->timestamps();
         });
     }

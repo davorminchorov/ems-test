@@ -27,7 +27,7 @@ final readonly class SpeakerSignUpController
             )
         );
 
-        $this->session->flash('status', __('Speaker signed up successfully!'));
+        $this->session->flash('status', __('You signed up as a speaker successfully!'));
 
         return new RedirectResponse('dashboard');
     }

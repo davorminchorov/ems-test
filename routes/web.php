@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/speakers', SpeakerSignUpController::class)->name('speakers.sign-up');
 
     Route::get('/talk-proposals/submit', TalkProposalSubmissionPageController::class)->name('talk-proposals.submission-page');
-    Route::post('/talk-proposals', TalkProposalSubmissionController::class)->name('talk-proposals.submission-page');
+    Route::post('/talk-proposals', TalkProposalSubmissionController::class)->name('talk-proposals.submit');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

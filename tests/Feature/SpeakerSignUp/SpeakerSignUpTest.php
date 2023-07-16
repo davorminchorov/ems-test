@@ -31,11 +31,10 @@ final class SpeakerSignUpTest extends TestCase
                 'bio' => $speaker->bio,
             ])
             ->assertRedirect('/dashboard')
-            ->assertSessionHas('status', __('Speaker signed up successfully!'));
+            ->assertSessionHas('status', __('You signed up as a speaker successfully!'));
 
         $this->assertDatabaseHas($speaker->getTable(), $speaker->getAttributes());
     }
-
 
     /**
      * @test
@@ -102,6 +101,10 @@ final class SpeakerSignUpTest extends TestCase
                 str_repeat(string: 'a', times: 210),
             ],
             'The bio field is required' => ['bio', ''],
+            'The bio may not be less than 10 characters' => [
+                'bio',
+                str_repeat(string: 'a', times: 9),
+            ],
             'The bio may not be greater than 1000 characters' => [
                 'bio',
                 str_repeat(string: 'a', times: 1100),

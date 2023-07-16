@@ -1,7 +1,7 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Speaker Information') }}
+            {{ __('Speaker Sign Up') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
@@ -27,7 +27,7 @@
             <x-input-error class="mt-2" :messages="$errors->get('bio')" />
         </div>
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('Sign Up') }}</x-primary-button>
         </div>
     </form>
 </section>
