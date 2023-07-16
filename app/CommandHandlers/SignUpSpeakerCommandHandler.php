@@ -1,11 +1,11 @@
 <?php
 
-namespace App\SpeakerSignUp\CommandHandlers;
+namespace App\CommandHandlers;
 
-use App\SpeakerSignUp\Commands\SignUpSpeakerCommand;
-use App\SpeakerSignUp\Events\SpeakerSignedUp;
-use App\SpeakerSignUp\Exceptions\EmailAddressAlreadyExists;
-use App\SpeakerSignUp\Models\Speaker;
+use App\Commands\SignUpSpeakerCommand;
+use App\Events\SpeakerSignedUp;
+use App\Exceptions\EmailAddressAlreadyExists;
+use App\Models\Speaker;
 use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Events\Dispatcher;
 

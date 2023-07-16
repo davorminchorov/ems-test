@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\SpeakerSignUp\Events\SpeakerSignedUp;
-use App\SpeakerSignUp\Listeners\SendSignUpConfirmationEmail;
+use App\Events\SpeakerSignedUp;
+use App\Listeners\SendSignUpConfirmationEmail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;

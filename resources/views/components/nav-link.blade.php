@@ -1,4 +1,4 @@
-@props(['active'])
+@props(['active', 'hidden' => false])
 
 @php
 $classes = ($active ?? false)

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\SpeakerSignUp\Models\Speaker;
+use App\Models\Speaker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\SpeakerSignUp\Http\Controllers\SpeakerSignUpController;
-use App\SpeakerSignUp\Http\Controllers\SpeakerSignUpPageController;
+use App\Http\Controllers\SpeakerSignUpController;
+use App\Http\Controllers\SpeakerSignUpPageController;
+use App\Http\Controllers\TalkProposalSubmissionController;
+use App\Http\Controllers\TalkProposalSubmissionPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +29,9 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/speakers/sign-up', SpeakerSignUpPageController::class)->name('speakers.sign-up-page');
     Route::post('/speakers', SpeakerSignUpController::class)->name('speakers.sign-up');
+
+    Route::get('/talk-proposals/submit', TalkProposalSubmissionPageController::class)->name('talk-proposals.submission-page');
+    Route::post('/talk-proposals', TalkProposalSubmissionController::class)->name('talk-proposals.submission-page');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -2,16 +2,16 @@
 
 namespace Database\Factories;
 
-use App\Models\UserAuthentication;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends Factory<UserAuthentication>
+ * @extends Factory<User>
  */
-class UserAuthenticationFactory extends Factory
+class UserFactory extends Factory
 {
-    protected $model = UserAuthentication::class;
+    protected $model = User::class;
 
     /**
      * Define the model's default state.

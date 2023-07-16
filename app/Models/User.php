@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\SpeakerSignUp\Models\Speaker;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-final class UserAuthentication extends Authenticatable
+final class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -50,6 +49,6 @@ final class UserAuthentication extends Authenticatable
 
     public function speaker(): HasOne
     {
-        return $this->hasOne(Speaker::class);
+        return $this->hasOne(Speaker::class, 'user_id', 'id');
     }
 }

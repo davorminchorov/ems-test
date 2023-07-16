@@ -1,8 +1,8 @@
 <?php
 
-namespace App\SpeakerSignUp\Listeners;
+namespace App\Listeners;
 
-use App\SpeakerSignUp\Events\SpeakerSignedUp;
+use App\Events\SpeakerSignedUp;
 
 class SendSignUpConfirmationEmail
 {

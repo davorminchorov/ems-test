@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\SpeakerSignUp\Commands;
+namespace App\Events;
 
-final readonly class SignUpSpeakerCommand
+final readonly class SpeakerSignedUp
 {
     public function __construct(
         public string $name,

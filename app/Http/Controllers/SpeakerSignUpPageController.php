@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\SpeakerSignUp\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\Factory;
 use Illuminate\View\View;

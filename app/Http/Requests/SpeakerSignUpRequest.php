@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\SpeakerSignUp\Http\Requests;
+namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\SpeakerSignUp\CommandHandlers\SignUpSpeakerCommandHandler;
-use App\SpeakerSignUp\Commands\SignUpSpeakerCommand;
+use App\CommandHandlers\SignUpSpeakerCommandHandler;
+use App\Commands\SignUpSpeakerCommand;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\ServiceProvider;
 

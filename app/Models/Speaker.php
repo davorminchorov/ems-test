@@ -1,9 +1,7 @@
 <?php
 
-namespace App\SpeakerSignUp\Models;
+namespace App\Models;
 
-use App\Models\UserAuthentication;
-use App\SpeakerSignUp\Events\SpeakerSignedUp;
 use Database\Factories\SpeakerFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -25,7 +23,7 @@ final class Speaker extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(UserAuthentication::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     protected static function newFactory(): SpeakerFactory

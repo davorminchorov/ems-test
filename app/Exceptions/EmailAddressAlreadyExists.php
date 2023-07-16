@@ -1,6 +1,6 @@
 <?php
 
-namespace App\SpeakerSignUp\Exceptions;
+namespace App\Exceptions;
 
 use Symfony\Component\HttpFoundation\Response;
 

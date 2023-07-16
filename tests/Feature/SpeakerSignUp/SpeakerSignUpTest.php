@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature\SpeakerSignUp;
 
-use App\Models\UserAuthentication;
-use App\SpeakerSignUp\Exceptions\EmailAddressAlreadyExists;
-use App\SpeakerSignUp\Models\Speaker;
+use App\Exceptions\EmailAddressAlreadyExists;
+use App\Models\Speaker;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -20,22 +20,20 @@ final class SpeakerSignUpTest extends TestCase
      */
     public function a_speaker_can_sign_up(): void
     {
-        $user = UserAuthentication::factory()->create();
+        $user = User::factory()->create();
         $speaker = Speaker::factory()->make();
 
         $response = $this->actingAs($user)
             ->from(route('speakers.sign-up-page'))
-            ->followingRedirects()->post(route('speakers.sign-up'), [
+            ->post(route('speakers.sign-up'), [
                 'name' => $speaker->name,
                 'email' => $speaker->email,
                 'bio' => $speaker->bio,
-            ]);
+            ])
+            ->assertRedirect('/dashboard')
+            ->assertSessionHas('status', __('Speaker signed up successfully!'));
 
         $this->assertDatabaseHas($speaker->getTable(), $speaker->getAttributes());
-
-        $response->assertOk();
-
-        $response->assertSeeText('Dashboard');
     }
 
 
@@ -47,7 +45,7 @@ final class SpeakerSignUpTest extends TestCase
         $this->withoutExceptionHandling();
         $this->expectException(EmailAddressAlreadyExists::class);
 
-        $user = UserAuthentication::factory()->create();
+        $user = User::factory()->create();
         $email = 'something@gmail.com';
         $speakerWithExistingEmail = Speaker::factory()->create(['email' => $email, 'user_id' => $user->id]);
         $speaker = Speaker::factory()->make(['email' => $email]);
@@ -63,7 +61,7 @@ final class SpeakerSignUpTest extends TestCase
 
         $this->assertDatabaseMissing($speaker->getTable(), $speaker->getAttributes());
     }
-    
+
     /**
      * @test
      *
@@ -71,7 +69,7 @@ final class SpeakerSignUpTest extends TestCase
      */
     public function check_speaker_sign_up_validation_errors(string $field, mixed $value): void
     {
-        $user = UserAuthentication::factory()->create();
+        $user = User::factory()->create();
         $speaker = Speaker::factory()->make();
 
         $response = $this->actingAs($user)

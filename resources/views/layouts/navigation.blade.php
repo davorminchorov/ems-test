@@ -15,9 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('speakers.sign-up-page')" :active="request()->routeIs('speakers.sign-up-page')">
-                        {{ __('Speaker Sign Up') }}
-                    </x-nav-link>
+                    @if(auth()->user()->speaker)
+                        <x-nav-link :href="route('talk-proposals.submission-page')" :active="request()->routeIs('talk-proposals.submission-page')">
+                            {{ __('Submit Talk Proposal') }}
+                        </x-nav-link>
+                    @else
+                        <x-nav-link :href="route('speakers.sign-up-page')" :active="request()->routeIs('speakers.sign-up-page')">
+                            {{ __('Speaker Sign Up') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -73,9 +79,15 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('speakers.sign-up-page')" :active="request()->routeIs('speakers.sign-up-page')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+            @if(auth()->user()->speaker)
+                <x-responsive-nav-link :href="route('talk-proposals.submission-page')" :active="request()->routeIs('talk-proposals.submission-page')">
+                    {{ __('Submit Talk Proposal') }}
+                </x-responsive-nav-link>
+            @else
+                <x-responsive-nav-link :href="route('speakers.sign-up-page')" :active="request()->routeIs('speakers.sign-up-page')">
+                    {{ __('Speaker Sign Up') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
