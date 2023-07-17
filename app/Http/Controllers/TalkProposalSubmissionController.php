@@ -27,7 +27,7 @@ final readonly class TalkProposalSubmissionController
             )
         );
 
-        $this->session->flash('status', __('The talk proposal was submitted successfully!'));
+        $this->session->flash('status', __('Your talk proposal was submitted successfully!'));
 
         return new RedirectResponse('dashboard');
     }

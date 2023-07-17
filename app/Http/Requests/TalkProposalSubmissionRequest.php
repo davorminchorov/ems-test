@@ -27,7 +27,7 @@ final class TalkProposalSubmissionRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:200'],
             'abstract' => ['required', 'string', 'min:10', 'max:1000'],
-            'preferred_time_slot' => ['required', 'string', 'date_format:H:i'],
+            'preferred_time_slot' => ['required', 'string', 'date_format:H:i:s'],
         ];
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\CommandHandlers\SignUpSpeakerCommandHandler;
+use App\CommandHandlers\SubmitTalkProposalCommandHandler;
 use App\Commands\SignUpSpeakerCommand;
+use App\Commands\SubmitTalkProposalCommand;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +26,7 @@ class CommandBusServiceProvider extends ServiceProvider
     {
         Bus::map([
             SignUpSpeakerCommand::class => SignUpSpeakerCommandHandler::class,
+            SubmitTalkProposalCommand::class => SubmitTalkProposalCommandHandler::class,
         ]);
     }
 }

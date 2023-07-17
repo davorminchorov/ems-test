@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Speaker;
 use App\Models\TalkProposal;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,8 +20,7 @@ class TalkProposalFactory extends Factory
     public function definition(): array
     {
         return [
-            'speaker_id' => Speaker::factory(),
-            'title' => $this->faker->words(5),
+            'title' => $this->faker->words(5, true),
             'abstract' => $this->faker->paragraphs(2, true),
             'preferred_time_slot' => $this->faker->time(),
         ];
