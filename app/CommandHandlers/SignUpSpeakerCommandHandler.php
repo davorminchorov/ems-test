@@ -6,12 +6,11 @@ use App\Commands\SignUpSpeakerCommand;
 use App\Events\SpeakerSignedUp;
 use App\Exceptions\EmailAddressAlreadyExists;
 use App\Models\Speaker;
-use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Events\Dispatcher;
 
 final readonly class SignUpSpeakerCommandHandler
 {
-    public function __construct(private Factory $authenticationFactory, private Speaker $speaker, private Dispatcher $eventDispatcher)
+    public function __construct(private Speaker $speaker, private Dispatcher $eventDispatcher)
     {
 
     }
@@ -28,7 +27,7 @@ final readonly class SignUpSpeakerCommandHandler
         }
 
         $speaker = Speaker::signUp(
-            $this->authenticationFactory->guard('web')->id(),
+            $signUpSpeakerCommand->userId,
             $signUpSpeakerCommand->name,
             $signUpSpeakerCommand->email,
             $signUpSpeakerCommand->bio
