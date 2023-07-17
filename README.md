@@ -68,4 +68,9 @@ Once you are in, sign up as a speaker from the top navigation menu.
 
 Now that that's successful, you can submit a talk proposal by visiting the talk proposal submission form.
 
+To view the talk proposals API go to:
+```
+GET http://localhost:8000/api/v1/talk-proposals
+```
+
 If you have any trouble running this project or using it, feel free to contact me.
