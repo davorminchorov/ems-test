@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TalkProposal extends Model
 {
@@ -19,6 +21,11 @@ class TalkProposal extends Model
         'preferred_time_slot' => 'string',
     ];
 
+    public function speaker(): BelongsTo
+    {
+        return $this->belongsTo(Speaker::class);
+    }
+
     public static function submit(
         int $speakerId,
         string $title,
@@ -32,5 +39,10 @@ class TalkProposal extends Model
             'preferred_time_slot' => $preferredTimeSlot,
         ]);
 
+    }
+
+    public static function paginatedTalkProposalsList(): LengthAwarePaginator
+    {
+        return self::query()->with(['speaker'])->orderByDesc('preferred_time_slot')->paginate();
     }
 }

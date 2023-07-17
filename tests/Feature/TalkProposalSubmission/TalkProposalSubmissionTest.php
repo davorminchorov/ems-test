@@ -109,9 +109,9 @@ final class TalkProposalSubmissionTest extends TestCase
                 str_repeat(string: 'a', times: 1100),
             ],
             'The preferred time slot field is required' => ['preferred_time_slot', ''],
-            'The preferred time slot should be in the time format of H:i:s' => [
+            'The preferred time slot should be in the time format of H:i' => [
                 'preferred_time_slot',
-                'aa:aa:aa',
+                'aa:aa',
             ],
         ];
     }

@@ -22,7 +22,7 @@ class TalkProposalFactory extends Factory
         return [
             'title' => $this->faker->words(5, true),
             'abstract' => $this->faker->paragraphs(2, true),
-            'preferred_time_slot' => $this->faker->time(),
+            'preferred_time_slot' => $this->faker->time('H:i'),
         ];
     }
 }
