@@ -15,7 +15,6 @@ class TalkProposalsListApiTest extends TestCase
 
     /**
      * @test
-     * @return void
      */
     public function it_can_display_a_list_of_talk_proposals_ordered_by_preferred_time_slot(): void
     {
